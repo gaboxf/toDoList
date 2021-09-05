@@ -1,0 +1,49 @@
+header{
+    /*background-color: aquamarine;*/
+
+    >h1{
+        text-transform: capitalize;
+    }
+}
+
+#addItem{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    >input {
+        flex-grow: 2;
+        font-size: 1rem;
+    }
+}
+
+
+
+#list{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        background-color: #eeeeee;
+        div{
+            display: flex;
+            flex-direction: row;
+        }
+        input[type = "checkbox"]{
+            margin-right: 1rem;
+        }
+        input:checked + span {
+            text-decoration: line-through;
+        }
+        span {
+            margin: 0;
+        }
+    }
+}
