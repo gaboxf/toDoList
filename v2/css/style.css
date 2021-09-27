@@ -1,0 +1,95 @@
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+header > h1 {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+header > button {
+  width: 100px;
+  height: 50px;
+  -webkit-transform: translateY(30%) translateX(50%);
+          transform: translateY(30%) translateX(50%);
+}
+
+#addItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+#addItem > input {
+  margin: 0 5px;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  font-size: 1rem;
+}
+
+#todolist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#todolist > li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: #eeeeee;
+}
+
+#todolist > li div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#todolist > li input[type="checkbox"] {
+  margin-right: 0;
+}
+
+#todolist > li input:checked + span {
+  text-decoration: line-through;
+}
+
+#todolist > li span {
+  margin-left: 1rem;
+}
+/*# sourceMappingURL=style.css.map */

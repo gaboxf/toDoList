@@ -1,0 +1,58 @@
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    >h1{
+        text-align: center;
+        text-transform: capitalize;
+    }
+    >button{
+        width: 100px;
+        height: 50px;
+        transform: translateY(30%) translateX(50%);
+    }
+}
+
+#addItem{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    >input {
+        margin: 0 5px;
+        flex-grow: 2;
+        font-size: 1rem;
+    }
+}
+
+
+
+#todolist{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        background-color: #eeeeee;
+        div{
+            display: flex;
+            flex-direction: row;
+        }
+        input[type = "checkbox"]{
+            margin-right: 1rem;
+        }
+        input:checked + span {
+            text-decoration: line-through;
+        }
+        span {
+            margin: 0;
+        }
+    }
+}
