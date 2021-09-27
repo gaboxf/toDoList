@@ -131,11 +131,10 @@ function shareTask(id) {
       return;
     }
 
-    const text = document.getElementById(id);
-    const textContent = text.querySelector("span").textContent;
+    const task = tasks.filter(t => t.taskId == id)[0]
     navigator.share({
         title: 'To-do List',
-        text: textContent,
+        text: task.taskName,
         url: 'https://whatwebcando.today/'
       })
       .then(() => console.log('Successful share'))
