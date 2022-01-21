@@ -46,21 +46,18 @@ addBtn.addEventListener("click", evento =>{
 //Eventos para detectar el lugar donde hacemos click
 const toDoList = document.querySelector("#todolist");
 toDoList.addEventListener("click", evento => {
-    const selected = evento.target.closest("li").getAttribute("id");
-
-    //console.log("Primero: "+ (evento.target.parentElement.getAttribute("id"))+", Segundo: "+ selected);
-    if (evento.target.parentElement.getAttribute("id") == selected && evento.target.closest("input").getAttribute("id") == "deleteBtn") {
-        deleteTask(selected);
-    }
-    if (evento.target.parentElement.getAttribute("id") == selected && evento.target.closest("input").getAttribute("id") == "shareBtn") {
-        shareTask(selected);
-    }
-    if (evento.target.parentElement.getAttribute("id") == selected && evento.target.closest("input").getAttribute("id") == "copyBtn") {
-        clipboard(selected);
-    }
-    if (evento.target.parentElement.getAttribute("id") == selected && evento.target.closest("input").getAttribute("id") == "checkboxBtn") {
-        //no detecta el click en el checkbox
-        checked(selected);
+    try {
+        if (evento.target.closest("button").getAttribute("id") == "deleteBtn") {
+            deleteTask(evento.target.closest("li").getAttribute("id"));
+        }
+        if (evento.target.closest("button").getAttribute("id") == "shareBtn") {
+            shareTask(evento.target.closest("li").getAttribute("id"));
+        }
+        if (evento.target.closest("button").getAttribute("id") == "copyBtn") {
+            clipboard(evento.target.closest("li").getAttribute("id"));
+        }
+    } catch (error) {
+        /* Error controlado al hacer click fuera del area que necesito comprobar */
     }
 });
 
@@ -72,15 +69,23 @@ fsBtn.addEventListener("click", fullScreen);
 function addTask(task){
     const nodeTask = document.createElement("li");
     nodeTask.setAttribute("id", task.taskId);
-    nodeTask.innerHTML = 
-                    `
-                    <div>
-                        <input type="checkbox" name="" id="checkboxBtn">
-                        <span>${task.taskName}</span>    
+    nodeTask.innerHTML =
+        `
+                    <div class="taskContent">
+                        <input type="checkbox" name="" id="">
+                        <span>${taskName}</span>    
                     </div>
-                    <input type="button" value="Copy" id="copyBtn">
-                    <input type="button" value="Share" id="shareBtn">
-                    <input type="button" value="X" id="deleteBtn">
+                    <div class="taskButtons">
+                        <button type="submit" id="copyBtn">
+                            <span class="mdi mdi-clipboard-multiple-outline"></span>
+                        </button>
+                        <button type="submit" id="shareBtn">
+                            <span class="mdi mdi-share-variant"></span>
+                        </button>
+                        <button type="submit" id="deleteBtn">
+                            <span class="mdi mdi-delete"></span>
+                        </button>
+                    </div>
                     `;
     
     toDoList.prepend(nodeTask);//agrega un hijo al principio.
@@ -113,14 +118,14 @@ function setID(longitud){
     return id;
 }
 
-function fullScreen(){
+function fullScreen() {
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen();
-        fsBtn.innerText = "Exit";
-    }else{
-        if (document.exitFullscreen){
+        fsBtn.firstElementChild.setAttribute('class', 'mdi mdi-fullscreen-exit');
+    } else {
+        if (document.exitFullscreen) {
             document.exitFullscreen();
-            fsBtn.innerText = "Full Screen";
+            fsBtn.firstElementChild.setAttribute('class', 'mdi mdi-fullscreen');
         }
     }
 }

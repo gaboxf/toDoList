@@ -9,17 +9,25 @@
     <title>To-Do List</title>
 </head>
 <body>
-    <header>
-        <h1>to-do list</h1>
-        <button id="screen">Full Screen</button>
-    </header>
-    <div id="addItem">
-        <input type="text" id="taskName" placeholder="Add new task">
-        <input type="submit" value="ADD" id="addBtn">
-    </div>
+    <main>
+        <header>
+            <h1>to-do list</h1>
+            <button id="fsBtn">
+                <span class="mdi mdi-fullscreen"></span>
+            </button>
+        </header>
 
-    <ul id="todolist">
-    </ul>
+        <div id="addItem">
+            <input type="text" id="taskName" placeholder="Add new task">
+            <button type="submit" id="addBtn">
+                <span class="mdi mdi-plus-thick"></span>
+            </button>
+        </div>
+    
+        <ul id="todolist">
+            <!-- Lista insertada con JS -->
+        </ul>
+    </main>
     <script src="js/main.js"></script>
 </body>
 </html>
