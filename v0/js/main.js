@@ -10,7 +10,9 @@ function addTask(){
                         <input type="checkbox" name="" id="">
                         <span>${taskName}</span>
                     </div>
-                    <input type="button" value="X" onclick="this.parentElement.remove()">
+                    <button id="deleteBtn" onclick="this.parentElement.remove()">
+                        <span class="mdi mdi-delete"></span>
+                    </button>
                     `;
     const list = document.getElementById("list");
     list.prepend(nodeTask);//agrega un hijo al principio.
