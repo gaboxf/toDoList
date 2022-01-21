@@ -1,49 +1,112 @@
-header{
-    /*background-color: aquamarine;*/
-
-    >h1{
-        text-transform: capitalize;
-    }
+//Estilos generales
+body {
+  font-family: "Inter", sans-serif;
+  height: 100vh;
+  margin: 0 0 0 0;
 }
 
-#addItem{
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  align-items: center;
+}
+
+//Estilos para el header junto con el título
+main > header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  max-width: 60rem;
+  min-height: 6rem;
+  margin-bottom: 3rem;
+  justify-content: space-between;
+  width: 90vw;
+  text-align: center;
+  > h1 {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+}
+
+//Estilos del input de tareas y el boton
+
+main > div#addItem {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 4rem;
+  max-width: 60rem;
+  min-height: 6rem;
+  margin-bottom: 1rem;
+  padding: 0;
+  width: 90vw;
+  box-sizing: border-box;
+  > input#taskName {
+    border: 1.5px solid #000;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    height: 4rem;
+    padding: 0 1rem;
+    width: 100%;
+    transition: 0.3s all;
+  }
+  > Button#addBtn {
+    border: 1.5px solid #000;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    font-size: 2rem;
+    height: 4rem;
+    padding: 0 1rem;
+    width: 20%;
+    transition: 0.3s all;
+  }
+}
+
+//Estilos para la lista de tareas
+
+main > ul#list {
+  display: flex;
+  flex-direction: column;
+  max-width: 60rem;
+  min-height: 6rem;
+  padding: 0;
+  width: 90vw;
+  list-style: none;
+
+  > li {
+    align-items: center;
+    border: 2px solid #000;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    margin-bottom: 1rem;
-    >input {
-        flex-grow: 2;
-        font-size: 1rem;
+    min-height: 4rem;
+    justify-content: space-between;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: 0.3s all;
+
+    div {
+      display: flex;
+      flex-direction: row;
     }
-}
-
-
-
-#list{
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    > li {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0.5rem;
-        margin-bottom: 1rem;
-        background-color: #eeeeee;
-        div{
-            display: flex;
-            flex-direction: row;
-        }
-        input[type = "checkbox"]{
-            margin-right: 1rem;
-        }
-        input:checked + span {
-            text-decoration: line-through;
-        }
-        span {
-            margin: 0;
-        }
+    input[type="checkbox"] {
+      margin-right: 1rem;
     }
+    input:checked + span {
+      text-decoration: line-through;
+    }
+    button {
+      padding: 0 0.5rem;
+      font-size: 1rem;
+    }
+    span {
+      margin: 0;
+    }
+  }
 }
