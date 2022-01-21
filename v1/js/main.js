@@ -15,20 +15,24 @@ document.addEventListener("keypress", event => {
     }
 });
 
-
 const toDoList = document.querySelector("#todolist");
+
 toDoList.addEventListener("click", evento => {
-    const selected = evento.target.closest("li").getAttribute("id");
 
     //console.log("Primero: "+ (evento.target.parentElement.getAttribute("id"))+", Segundo: "+ selected);
-    if (evento.target.parentElement.getAttribute("id") == selected && evento.target.closest("input").getAttribute("id") == "deleteBtn") {
-        deleteTask(selected);
-    }
-    if (evento.target.parentElement.getAttribute("id") == selected && evento.target.closest("input").getAttribute("id") == "shareBtn") {
-        shareTask(selected);
-    }
-    if (evento.target.parentElement.getAttribute("id") == selected && evento.target.closest("input").getAttribute("id") == "copyBtn") {
-        clipboard(selected);
+
+    try {
+        if (evento.target.closest("button").getAttribute("id") == "deleteBtn") {
+            deleteTask(evento.target.closest("li").getAttribute("id"));
+        }
+        if (evento.target.closest("button").getAttribute("id") == "shareBtn") {
+            shareTask(evento.target.closest("li").getAttribute("id"));
+        }
+        if (evento.target.closest("button").getAttribute("id") == "copyBtn") {
+            clipboard(evento.target.closest("li").getAttribute("id"));
+        }
+    } catch (error) {
+        /* Error controlado al hacer click fuera del area que necesito comprobar */
     }
 });
 
