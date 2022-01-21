@@ -1,18 +1,19 @@
 const addBtn = document.querySelector("#addBtn");
 const taskInput = document.getElementById("taskName");
-addBtn.addEventListener("click", evento =>{
+addBtn.addEventListener("click", evento => {
     evento.preventDefault();
 
     if (taskInput.value != "") {
         addTask();
     }
 });
-document.addEventListener("keypress", event =>{
-    if(event.key === "Enter"){
+document.addEventListener("keypress", event => {
+    if (event.key === "Enter") {
         if (taskInput.value != "") {
             addTask();
         }
-    }});
+    }
+});
 
 
 const toDoList = document.querySelector("#todolist");
@@ -31,38 +32,46 @@ toDoList.addEventListener("click", evento => {
     }
 });
 
-const fsBtn = document.getElementById("screen");
+const fsBtn = document.getElementById("fsBtn");
 fsBtn.addEventListener("click", fullScreen);
-function addTask(){
+function addTask() {
     const taskName = document.getElementById("taskName").value;
     const nodeTask = document.createElement("li");
     nodeTask.setAttribute("id", setID(4));
-    nodeTask.innerHTML = 
-                    `
-                    <div>
+    nodeTask.innerHTML =
+        `
+                    <div class="taskContent">
                         <input type="checkbox" name="" id="">
                         <span>${taskName}</span>    
                     </div>
-                    <input type="button" value="Copy" id="copyBtn">
-                    <input type="button" value="Share" id="shareBtn">
-                    <input type="button" value="X" id="deleteBtn">
+                    <div class="taskButtons">
+                        <button type="submit" id="copyBtn">
+                            <span class="mdi mdi-clipboard-multiple-outline"></span>
+                        </button>
+                        <button type="submit" id="shareBtn">
+                            <span class="mdi mdi-share-variant"></span>
+                        </button>
+                        <button type="submit" id="deleteBtn">
+                            <span class="mdi mdi-delete"></span>
+                        </button>
+                    </div>
                     `;
-    
+
     toDoList.prepend(nodeTask);//agrega un hijo al principio.
 
     clearInput();
 }
 
-function clearInput(){
+function clearInput() {
     let taskName = document.getElementById("taskName");
     taskName.value = "";
 }
 
-function deleteTask(id){
+function deleteTask(id) {
     document.getElementById(id).remove();
 }
 
-function setID(longitud){
+function setID(longitud) {
     let id = '';
     let caracteres = '0123456789';
 
@@ -71,28 +80,28 @@ function setID(longitud){
     }
 
     for (let i = 0; i < longitud; i++) {
-        id += caracteres.charAt(Math.floor(Math.random()*caracteres.length));
+        id += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
     }
 
     return id;
 }
 
-function fullScreen(){
+function fullScreen() {
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen();
-        fsBtn.innerText = "Exit";
-    }else{
-        if (document.exitFullscreen){
+        fsBtn.firstElementChild.setAttribute('class', 'mdi mdi-fullscreen-exit');
+    } else {
+        if (document.exitFullscreen) {
             document.exitFullscreen();
-            fsBtn.innerText = "Full Screen";
+            fsBtn.firstElementChild.setAttribute('class', 'mdi mdi-fullscreen');
         }
     }
 }
 
 function shareTask(id) {
     if (!("share" in navigator)) {
-      alert('Web Share API not supported.');
-      return;
+        alert('Web Share API not supported.');
+        return;
     }
 
     const text = document.getElementById(id);
@@ -101,9 +110,9 @@ function shareTask(id) {
         title: 'To-do List',
         text: textContent,
         url: 'https://whatwebcando.today/'
-      })
-      .then(() => console.log('Successful share'))
-      .catch(error => console.log('Error sharing:', error));
+    })
+        .then(() => console.log('Successful share'))
+        .catch(error => console.log('Error sharing:', error));
 }
 
 function clipboard(id) {
